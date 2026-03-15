@@ -48,6 +48,7 @@ export const authOptions : NextAuthOptions = {
             })
         ],
         callbacks:{
+            // when user logined in 
             async jwt({token , user}){
                 if(user){
                     token._id = user._id?.toString();
@@ -57,6 +58,7 @@ export const authOptions : NextAuthOptions = {
                 }
                 return token;
             },
+            // this will run when data is used in frontend
             async session({token , session}){
                 if(token){
                     session.user._id = token._id as string;

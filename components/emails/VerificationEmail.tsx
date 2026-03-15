@@ -36,14 +36,7 @@ export default function VerificationEmail({
               Thanks for signing up! Please verify your email by clicking the button below.
             </Text>
             <h1>{verifyCode}</h1>
-            <Button
-              href={verifyCode}
-              className="mt-6 inline-block bg-blue-600 text-white px-5 py-3 rounded-md text-sm font-medium"
-            >
-              
-              Verify Email
-            </Button>
-
+            
             <Text className="text-xs text-gray-400 mt-6">
               If you didn’t create this account, you can safely ignore this email.
             </Text>

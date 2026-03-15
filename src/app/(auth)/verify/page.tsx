@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Loader2 } from "lucide-react"
+import { useEffect } from "react"
+import { sendVarificataionEmail } from "@/helpers/sendVerificationEmail"
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,10 +13,56 @@ import { Label } from "@/components/ui/label"
 
 export default function VerifyPage() {
   const router = useRouter()
+  const [timer, setTimer] = useState(30);
+  const [disabled, setDisabled] = useState(true);
   const searchParams = useSearchParams()
 
-  // We now get username from query param
-  const username = searchParams.get("username")
+  useEffect(() => {
+      if (timer > 0) {
+        const interval = setInterval(() => {
+          setTimer(timer - 1);
+        }, 1000);
+
+        return () => clearInterval(interval);
+      } else {
+        setDisabled(false);
+      }
+    }, [timer]);
+    // We now get username from query param
+    const username = searchParams.get("username")
+
+    const handleResend = async() => {
+    setTimer(30);
+    setDisabled(true);
+
+    // call API here
+    try {
+      const response = await fetch("/api/manageEmailSending", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError("Error in sending Email")
+      } else {
+        setSuccess("Email send successfully.")
+      }
+
+    } catch (err) {
+      setError("Something went wrong")
+    }
+
+    setLoading(false)
+    console.log("OTP resent");
+  };
+
 
   const [verifyCode, setVerifyCode] = useState("")
   const [loading, setLoading] = useState(false)
@@ -104,6 +152,25 @@ export default function VerifyPage() {
                 className="bg-white/10 border-white/20 text-white text-center tracking-widest text-lg rounded-xl"
               />
             </div>
+             
+              <div className="flex flex-col items-center mt-4 gap-2">
+                <button
+                  onClick={handleResend}
+                  disabled={disabled}
+                  className={`px-4 py-2 rounded-md text-white ${
+                    disabled ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+                  }`}
+                >
+                  Resend OTP
+                </button>
+
+                {disabled && (
+                  <p className="text-sm text-gray-500">
+                    Resend available in {timer}s
+                  </p>
+                )}
+              </div>
+          
 
             <Button
               type="submit"

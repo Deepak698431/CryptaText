@@ -37,6 +37,7 @@ export async function PUT(req: NextRequest) {
     console.log("Session Username:", session.user.username);
     // Update user
     const updatedUser = await userModel.findOneAndUpdate(
+      // here in database left email will check which email field in database match with session.user.email 
       { email: session.user.email },
       {
         $set: {

@@ -1,6 +1,6 @@
 import mongoose , {Schema , Document} from "mongoose";
 
-// this is the interface or custom prototype of our schema
+// this is the interface or custom prototype of our schema , this is only for typescript checking.
 export interface Message extends Document{
     content : string,
     createdAt : Date
