@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // If not logged in and trying to access dashboard → go to signin
-    if (!token && url.pathname.startsWith('/dashboard')) {
+    if (!token && (url.pathname.startsWith('/dashboard') || url.pathname.startsWith('/verify') || url.pathname.startsWith('/profile'))) {
         return NextResponse.redirect(new URL('/signin', request.url))
     }
 
@@ -33,6 +33,7 @@ export const config = {
     '/signin',
     '/signup',
     '/dashboard/:path*',
-    '/verify/:path*'
+    '/verify/:path*',
+    '/profile/:path*'
   ]
 }
