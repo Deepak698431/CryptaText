@@ -53,7 +53,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-900 via-black to-slate-900 px-4">
+    <div className="relative flex items-center justify-center min-h-screen bg-linear-to-br from-indigo-900 via-black to-slate-900 px-4">
 
       <Card className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl">
 

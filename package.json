@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@react-email/components": "^1.0.7",
+    "@react-email/components": "^1.0.10",
     "@react-email/render": "^2.0.4",
     "@tailwindcss/postcss": "^4.2.0",
     "@uidotdev/usehooks": "^2.4.1",
@@ -27,6 +27,7 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-email": "^5.2.10",
     "react-hook-form": "^7.71.1",
     "resend": "^6.9.2",
     "tailwind-merge": "^3.4.1",
