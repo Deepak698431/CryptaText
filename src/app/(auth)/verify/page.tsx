@@ -113,7 +113,7 @@ export default function VerifyPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-900 via-black to-slate-900 px-4">
+    <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-indigo-900 via-black to-slate-900 px-4">
 
       <Card className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl">
 
@@ -165,7 +165,7 @@ export default function VerifyPage() {
                 </button>
 
                 {disabled && (
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-blue-700">
                     Resend available in {timer}s
                   </p>
                 )}

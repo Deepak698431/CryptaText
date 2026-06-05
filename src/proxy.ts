@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 // export { default } from "next-auth/middleware"
 import { getToken } from 'next-auth/jwt'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
 
     const token = await getToken({ req: request })
     const url = request.nextUrl
@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // If not logged in and trying to access dashboard → go to signin
-    if (!token && (url.pathname.startsWith('/dashboard') || url.pathname.startsWith('/verify') || url.pathname.startsWith('/profile'))) {
+    if (!token && (url.pathname.startsWith('/dashboard')  || url.pathname.startsWith('/profile'))) {
         return NextResponse.redirect(new URL('/signin', request.url))
     }
 
