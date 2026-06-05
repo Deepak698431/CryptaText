@@ -8,7 +8,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center px-6 py-24">
-        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-bold bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
           Welcome to ChatSphere
         </h1>
 
